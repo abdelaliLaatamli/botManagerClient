@@ -1,0 +1,75 @@
+<!-- <p>
+  profile works!
+</p> -->
+
+<h3 class="mt-4"> Profile </h3>
+<hr>
+<div class="row mt-4">
+
+    <div class="col-md-6">
+
+        <div class="card" >
+
+            <img src="https://static1.squarespace.com/static/5b11e4b0c3c16a72b5c9434e/5b1244e98a922da050260c28/5b39ef036d2a7342d2fadbae/1530523400861/feracci-partners-site-web-noumea-nouvelle-caledonie.nc.jpg?format=500w"
+                class="card-img-top" height="350" alt="...">
+            <!-- <img src="https://celestialdesignsx.com/img/light.jpg" class="card-img-top" height="350" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+
+    </div>
+    <div class="col-md-6">
+
+        <h3 class="text-center mb-3" >User</h3>
+
+
+
+
+
+          <form #templateVariableName="ngForm" (ngSubmit)="saveUser()">
+
+
+
+            <div class="form-group row py-2">
+              <label for="inputPassword" class="col-sm-3 col-form-label">User Name</label>
+              <div class="col-sm-9">
+                <input type="text" name="user_name" [(ngModel)]="userplay.user_name"  class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+
+            <div class="form-group row py-2">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Name Complaite</label>
+                <div class="col-sm-9">
+                  <input type="text"  name="name_complaite" [(ngModel)]="userplay.name_complaite"  class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+              </div>
+
+
+              <div class="form-group row py-2">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="email" [(ngModel)]="userplay.email" class="form-control" id="staticEmail" placeholder="email@example.com">
+                  </div>
+                </div>
+
+
+              <!-- <div class="form-group row py-2">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+                  </div>
+                </div> -->
+
+                <button type="submit" class="btn btn-primary float-right"> Save </button>
+
+          </form>
+
+
+
+    </div>
+
+</div>

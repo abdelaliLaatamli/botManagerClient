@@ -1,0 +1,66 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" style="position: fixed;height: 100%;">
+  <div class="sidebar-sticky mt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="./" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <i class="fas fa-tachometer-alt"></i>
+        <!-- <span data-feather="home"></span> -->
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./pages" routerLinkActive="active">
+          <i class="fab fa-app-store"></i>
+          <!-- <span data-feather="file"></span> -->
+          Manage Pages
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./payloads" routerLinkActive="active" >
+          <!-- <span data-feather="shopping-cart"></span> -->
+          <i class="fab fa-buffer"></i>
+          Manage Payloads
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./users" routerLinkActive="active" >
+          <!-- <span data-feather="shopping-cart"></span> -->
+          <i class="fas fa-users-cog"></i>
+          Manage Users
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./players" routerLinkActive="active" >
+          <!-- <span data-feather="shopping-cart"></span> -->
+          <i class="fas fa-gamepad"></i>
+          Manage Players
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="./tstplayer" routerLinkActive="active" >
+            <!-- <span data-feather="shopping-cart"></span> -->
+            <i class="fas fas fa-vial"></i>
+            Manage Test User
+          </a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./profile" routerLinkActive="active" >
+          <!-- <span data-feather="shopping-cart"></span> -->
+          <i class="fas fa-address-card"></i>
+          Manage Profile
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>

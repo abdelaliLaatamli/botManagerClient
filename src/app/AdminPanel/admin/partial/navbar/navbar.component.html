@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="position: fixed; width: 100%; z-index: 1000000000000;" >
+  <div class="navbar-brand" routerLink="/" >
+      <img src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    {{ appname }}
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto mt-1">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/admin" >Dashbord <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/docs" >Documentations</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/price" >Pricing</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+
+      <div class="btn-group">
+        <img src="assets/img/man.png" width="40px" height="40px" alt="" class="mr-2">
+
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.username | titlecase  }}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <!-- <button class="dropdown-item" type="button">Action</button> -->
+          <button class="dropdown-item" type="button"  routerLink="/admin/profile"  > profile  {{user.username | titlecase  }}</button>
+          <button class="dropdown-item" type="button" (click)="Logout()"  >Logout</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>

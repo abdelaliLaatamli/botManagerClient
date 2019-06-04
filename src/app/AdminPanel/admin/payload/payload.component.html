@@ -1,0 +1,153 @@
+<div *ngIf="alerts"  [className]="alerts.status_code==200 ? 'alert alert-success mt-4' : 'alert alert-danger mt-4'" role="alert">
+    <p  *ngIf="alerts.status_code==400" > {{ alerts.body.error.message + " ---- maybe you need to run game agait !! ---- or sent 5 times payload" }}</p>
+    <p  *ngIf="alerts.status_code==200" > Message sent , check you inbox </p>
+</div>
+
+
+
+<button [className]="alerts ? 'btn btn-primary float-right mt-2' : 'btn btn-primary float-right mt-4'"  class="btn btn-primary float-right mt-4" *ngIf="selectedPage" (click)='addPayload()'> Add Payload </button>
+<button type="button" [className]="alerts ? 'btn btn-primary float-right mx-3 mt-2' : 'btn btn-primary float-right mx-3 mt-4'" data-toggle="modal" data-target="#exampleModalScrollable"> Show Example </button>
+
+<h3 class="mt-4"> Payload </h3>
+<hr>
+
+<div class="row">
+
+  <div class="col-md-2">
+    <h4>Pages</h4>
+
+      <ul class="list-group">
+          <li class="list-group-item"  *ngFor="let page of pages" [ngClass]="{'active': page == selectedPage }" (click)="choosePage(page)"  > {{ page.name }} </li>
+      </ul>
+
+  </div>
+  <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px; ">
+
+    <h4>Payloads</h4>
+
+
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> Name </th>
+              <th scope="col"> Page </th>
+              <th scope="col"> Th day </th>
+              <th scope="col"> Create At  </th>
+              <th scope="col"> usertest </th>
+              <th scope="col"> test </th>
+              <th scope="col"> Delete </th>
+            </tr>
+          </thead>
+          <tbody>
+
+                <tr *ngFor="let payload of payloads"  [ngClass]="{'table-primary': payload == payloadSelected }" (click)="choosePayload(payload)" >
+                  <th scope="row">{{ payload.id }}</th>
+                  <td>{{ payload.name }}</td>
+                  <td>{{ payload.Page.name }}</td>
+                  <td>{{ payload.th_day }}</td>
+                  <td>{{ payload.createdAt | date:'dd/MM/yyyy' }} </td>
+                  <td>
+                    <!-- <input type="text" class="form-control form-control-sm" id="inputPassword2" placeholder="Password"> -->
+                    <select class="form-control form-control-sm" [(ngModel)]="selectedObj" >
+                        <!-- <select class="form-control form-control-sm" [(ngModel)]="selectedObj" (change)="aaaaa()" > -->
+                        <option value="Choose player" selected >Choose player</option>
+                        <option *ngFor="let testuser of testUsers" [ngValue]="testuser" > {{ testuser.name }} </option>
+                      </select>
+                  </td>
+                  <td> <button type="submit" class="btn btn-primary btn-sm mb-2"  [disabled]="selectedObj == 'Choose player'" (click)="sendtest( payload )" >send</button> </td>
+                  <td> <button class="btn btn-danger btn-sm" (click)="deletePayload(payload)" > Delete </button> </td>
+                </tr>
+
+          </tbody>
+        </table>
+
+  </div>
+
+
+    <div class="col-md-3" *ngIf="operation" >
+      <div class="card"  >
+
+        <img src="{{ payloadinSelected.image_url }}" class="card-img-top" style="height: 10rem;" alt="...">
+        <div class="card-body" style="padding: 0.5rem;" >
+          <h5 class="card-title"> {{ payloadinSelected.title }} </h5>
+          <p class="card-text"> {{ payloadinSelected.subtitle }}. </p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="#" style="font-weight: bold;" class="card-link"> {{ payloadinSelected.cta }} </a>
+        </div>
+      </div>
+
+      <form #form="ngForm" (ngSubmit)="savePayload()" class="mt-4">
+
+
+            <div class="form-group">
+                <label for="staticEmail" class="col-form-label">Name</label>
+                <input type="text" class="form-control"  id="staticEmail" [(ngModel)]="payloadSelected.name" name="name" placeholder="Title">
+              </div>
+
+              <div class="form-group">
+                <label for="staticEmail" class="col-form-label">Th day</label>
+                <!-- <input type="text" class="form-control"  id="staticEmail" [(ngModel)]="payloadSelected.th_day" name="th_day" placeholder="Title"> -->
+                <select [(ngModel)]="payloadSelected.th_day" class="form-control form-control-sm" name="th_day">
+                    <option>1</option>
+                    <option>3</option>
+                    <option>5</option>
+                    <option>7</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                  <label for="staticEmail" class="col-form-label">Title</label>
+                  <input type="text" class="form-control"  id="staticEmail" name="title" [(ngModel)]="payloadinSelected.title" placeholder="Title">
+                </div>
+
+              <div class="form-group">
+                  <label for="inputPassword" class="col-form-label">Subtitle</label>
+                  <input type="text" class="form-control" id="inputPassword" name="subtitle" [(ngModel)]="payloadinSelected.subtitle" placeholder="Subtitle">
+              </div>
+
+              <div class="form-group">
+                  <label for="inputPassword" class="col-form-label">Img URL</label>
+                  <input type="text" class="form-control" id="inputPassword" name="image_url" [(ngModel)]="payloadinSelected.image_url" placeholder="image_url">
+              </div>
+
+              <div class="form-group">
+                  <label for="inputPassword" class="col-form-label"> CTA </label>
+                  <input type="text" class="form-control" id="inputPassword" name="cta" [(ngModel)]="payloadinSelected.cta" placeholder="cta">
+              </div>
+
+              <button class="btn btn-primary float-right mt-1"> Save Payload </button>
+      </form>
+  </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalScrollable" tabindex="-1"  style="z-index: 100000000000000000" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/img/chatbot.JPG" alt="">
+          <img src="assets/img/template.JPG" width="450px" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+        <!-- 🎁 Dear Player! 🎉
+https://external.fcmn2-1.fna.fbcdn.net/safe_image.php?d=AQB8HclsevtuG5wQ&url=https%3A%2F%2Fwww.zhfbaa.cn%2FbotMsgImg%2Fballrush%2Fpush2.jpg&_nc_hash=AQCz1D-XPv3FOaZI
+      Come and get your free diamonds!💎💎💎
+      Claim! -->

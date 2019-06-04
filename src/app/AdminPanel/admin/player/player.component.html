@@ -1,0 +1,53 @@
+<h3 class="mt-4"> Player </h3>
+<hr>
+
+<div class="row mt-4">
+  <div class="col-md-5">
+      <table class="table ">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"> # </th>
+              <th scope="col"> Name </th>
+              <th scope="col"> Created At </th>
+              <th scope="col"> Players </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let page of pages"  (click)="selectedPlayer(page)" >
+              <th scope="row"> {{ page.id }} </th>
+              <td> {{ page.name }} </td>
+              <td> {{ page.createdAt | date:'dd/MM/yyyy' }} </td>
+              <td> {{ page.players }} </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  <div class="col-md-7">
+
+      <table class="table ">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"> # </th>
+              <th scope="col"> Name </th>
+              <th scope="col"> Created At </th>
+              <th scope="col"> Players </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let page of pages" >
+              <th scope="row"> {{ page.id }} </th>
+              <td> {{ page.name }} </td>
+              <td> {{ page.createdAt | date:'dd/MM/yyyy' }} </td>
+              <td> {{ page.players }} </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+  </div>
+</div>
+
+

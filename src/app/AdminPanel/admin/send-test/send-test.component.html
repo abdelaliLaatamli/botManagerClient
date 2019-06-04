@@ -1,0 +1,67 @@
+<button class="btn btn-primary float-right mt-4" (click)="operation='add'" > Add Test User </button>
+
+<h3 class="mt-4"> Test Users </h3>
+<hr>
+
+<table class="table mt-4">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Context</th>
+        <th scope="col">Sander id</th>
+        <th scope="col">Player id</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let testUser of testUsers">
+        <th scope="row"> {{ testUser.name }} </th>
+        <td> {{ testUser.context }} </td>
+        <td> {{ testUser.sander_id }} </td>
+        <td> {{ testUser.player_id }} </td>
+        <td> <button class="btn btn-warning" (click) ="editItem(testUser)" >Edit</button> </td>
+        <td> <button class="btn btn-danger"  (click) ="deleteItem(testUser)" >Delete</button>  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="mt-5" *ngIf="operation!=null" >
+  <!-- <form >
+
+  </form> -->
+  <form #forms="ngForm" (ngSubmit)="addUser()" class="mt-5" >
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label"> Name </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="staticEmail" name="name"  [(ngModel)]="userTest.name" placeholder="Name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label"> Context </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputPassword" name="context" [(ngModel)]="userTest.context" placeholder="Context">
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"> Sander id </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword" name="sander_id" [(ngModel)]="userTest.sander_id" placeholder="Sander id">
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label"> Player id </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword" name="player_id" [(ngModel)]="userTest.player_id" placeholder="Player id">
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-4 float-right" > Save </button>
+
+  </form>
+</div>

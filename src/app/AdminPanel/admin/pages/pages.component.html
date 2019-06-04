@@ -1,0 +1,55 @@
+
+<button class="btn btn-primary float-right mt-4" (click)="add()"> add Page </button>
+<h3 class="mt-4"> Pages </h3>
+<hr>
+
+
+<table class="table mt-5">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">App Name</th>
+        <th scope="col">App Secret</th>
+        <th scope="col">Access Upload Tocken</th>
+        <th scope="col">Created At </th>
+        <th scope="col">Update </th>
+        <th scope="col">Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of pages"  >
+            <th scope="row">{{item.id}} </th>
+            <td> {{ item.name }} </td>
+            <td> {{ item.app_secret }} </td>
+            <td> {{ substr( item.access_upload_tocken )   }} </td>
+            <td> {{ item.createdAt | date:'dd/MM/yyyy' }} </td>
+            <td> <button class="btn btn-warning" (click)='edit(item)' >Update </button> </td>
+            <td> <button class="btn btn-danger"  (click)='delete(item)' > Delete </button> </td>
+            <!-- <td> {{  item.createdAt }} </td> -->
+          </tr>
+
+
+      <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr> -->
+      <!-- <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+
+  <app-crud *ngIf="crudService.formActive"></app-crud>

@@ -1,0 +1,62 @@
+<form #loginForm="ngForm" (ngSubmit)="register()" >
+    <img class="mb-4"  src="assets/img/register.png" alt="" width="72" height="72" style=" margin: 0 auto;  display: block;">
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center" >Please Register</h1>
+
+    <div *ngIf='authError'>
+      <div class="alert alert-danger" role="alert" *ngIf="authError.error.error; else elseBlock">
+          {{ authError.error.error | titlecase }}
+        </div>
+
+        <ng-template #elseBlock>
+          <div class="alert alert-danger" role="alert">
+            {{ authError.error | titlecase }}
+          </div>
+        </ng-template>
+
+      </div>
+
+    <div class="form-group row pt-2">
+        <label for="staticUser" class="col-sm-3 col-form-label">User name</label>
+        <div class="col-sm-9">
+          <input type="text" name="email" [(ngModel)]="credentials.user_name" class="form-control" id="staticUser" placeholder="User name">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+          <label for="staticName" class="col-sm-3 col-form-label">Name </label>
+          <div class="col-sm-9">
+            <input type="text" name="email" [(ngModel)]="credentials.name_complaite"  class="form-control" id="staticName" placeholder="Uame complaite">
+          </div>
+        </div>
+
+
+      <div class="form-group row">
+          <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="text" name="email" [(ngModel)]="credentials.email"  class="form-control" id="staticEmail" placeholder="Email@example.com">
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPassword2" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" name="password" [(ngModel)]="credentials.password" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+          </div>
+
+          <!-- <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"> Confirm Password</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div> -->
+
+
+            <div class="form-group row">
+                <div class="col-sm-6 offset-4">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                </div>
+              </div>
+
+  </form>
