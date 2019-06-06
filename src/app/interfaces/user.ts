@@ -4,6 +4,7 @@ export interface User {
   user_name : string
   name_complaite : string
   email : string
+  role ? : string
   password : string
 
   exp : number
