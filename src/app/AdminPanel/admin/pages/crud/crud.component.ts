@@ -49,7 +49,7 @@ export class CrudComponent implements OnInit {
       if( this.crudservice.operation == "add" ){
           // console.log( this.crudservice.page.id )
           let idTemp = this.crudservice.page.id
-          this.http.post( environment.apiUrl +"/page" , this.crudservice.page )
+          this.http.post( environment.apiUrl +"page" , this.crudservice.page )
                     .subscribe(
                           ( data : any )  =>
                               { if ( data.pageID == idTemp ) this.pageComponent.allPages() } ,
@@ -58,7 +58,7 @@ export class CrudComponent implements OnInit {
       }
 
       if( this.crudservice.operation == "edit" )
-          this.http.put(  environment.apiUrl +"/page" , this.crudservice.page ).subscribe( data => console.log( data ) , err => console.log( err ) )
+          this.http.put(  environment.apiUrl +"page" , this.crudservice.page ).subscribe( data => console.log( data ) , err => console.log( err ) )
 
       this.crudservice.formActive = false
       this.crudservice.resetForm()
