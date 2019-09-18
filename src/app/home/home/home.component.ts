@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,15 @@ import Typed from 'typed.js';
 })
 export class HomeComponent implements OnInit {
 
-  phras : string = "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa .......... "
+  // phras : string = "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa .......... "
+  phras =  "Hi Im a Bot !! <br> I'm  Here to Help you <br> To automate your Conversations <br>  Sing up and let start <br> !!!!!! ..... "
 
   constructor() { }
 
   ngOnInit() {
 
     this.typrenCursul()
+    this. jqueryFuncs()
   }
 
 
@@ -31,6 +34,21 @@ export class HomeComponent implements OnInit {
     };
 
     const typed = new Typed('.typed-element', options);
+
+  }
+
+
+  jqueryFuncs(){
+
+    resize();
+
+    $(window).resize( () => {
+      resize();
+    } )
+
+    function resize(){
+      $(".typed-element").css({ 'margin-top' : ( $(window).height() - $(".typed-element").height() ) / 2  })
+    }
 
   }
 

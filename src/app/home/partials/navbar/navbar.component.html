@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">
-      <img src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      <!-- src="assets/img/login2.png" -->
+      <img src="assets/img/bot-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     {{ appname }}
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,20 +16,22 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/docs">Docs</a>
       </li>
-      <li class="nav-item" *ngIf="!this.auth.isloggedIn()">
+      <!-- <li class="nav-item" *ngIf="!this.auth.isloggedIn()">
         <a class="nav-link" routerLink="/auth"> Login </a>
       </li>
       <li class="nav-item"  *ngIf="!this.auth.isloggedIn()" >
           <a class="nav-link" routerLink="/auth" > Register </a>
-      </li>
+      </li> -->
 
       <li class="nav-item"  *ngIf="this.auth.isloggedIn()" >
           <a class="nav-link" routerLink="/admin" > Dashbord </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <a class="btn btn-outline-dark my-2 my-sm-0"  routerLink="/auth" > Authentification </a>
+    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  authError = false
+  authError : any = false
 
 
   constructor( public auth : AuthService , public router : Router  ) { }
@@ -31,7 +31,14 @@ export class LoginComponent implements OnInit {
   login() : void {
 
     this.auth.login( this.credentials )
-        .subscribe(  () => this.router.navigateByUrl('/admin')  ,  err => this.authError =  err , () => console.log('HTTP request completed.'))
+        .subscribe( () => this.router.navigateByUrl('/admin')  ,
+                    err => {
+                        this.authError =  err ;
+                        if( typeof  err.error  != "string" )
+                          this.authError.error = err.message
+
+                      }  ,
+                    () => console.log('HTTP request completed.'))
 
   }
 
