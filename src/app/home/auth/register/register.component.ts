@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   register(){
 
     this.auth.register( this.credentials )
-    .subscribe(  () => this.router.navigateByUrl('/admin')  ,  err => this.authError = err , () => console.log('HTTP request completed.'))
+    .subscribe(  () => this.router.navigateByUrl('/admin')  ,  err => { this.authError = err ; console.log( err ) } , () => console.log('HTTP request completed.'))
 
 
   }

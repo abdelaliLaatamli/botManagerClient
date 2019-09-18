@@ -33,12 +33,14 @@ export class LoginComponent implements OnInit {
     this.auth.login( this.credentials )
         .subscribe( () => this.router.navigateByUrl('/admin')  ,
                     err => {
+
                         this.authError =  err ;
                         if( typeof  err.error  != "string" )
                           this.authError.error = err.message
 
                       }  ,
-                    () => console.log('HTTP request completed.'))
+                    () => { console.log('HTTP request completed.') ;  this.authError.error = "HTTP request completed."
+                  } )
 
   }
 

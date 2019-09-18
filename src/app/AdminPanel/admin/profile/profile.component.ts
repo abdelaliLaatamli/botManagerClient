@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
     // this.auth.
     this.http.get( environment.apiUrl+"user" ,   { headers : {  Authorization : `${this.auth.getTokenGet()}` } }  )
-              .subscribe( (user : TokenPayload) => { this.userplay = user ; console.log( user ) } , err => console.log( err )  )
+              .subscribe( (user : TokenPayload) => { this.userplay = user ; /* console.log( user ) */ } , err => console.log( err )  )
   }
 
   saveUser(){
