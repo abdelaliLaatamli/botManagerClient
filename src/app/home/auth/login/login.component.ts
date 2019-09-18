@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  authError : any = false
+  authError : any
 
 
   constructor( public auth : AuthService , public router : Router  ) { }
